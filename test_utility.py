@@ -37,5 +37,18 @@ def feature_target_sample(housing_data_sample):
 
 def test_data_split(feature_target_sample):
     return_tuple = data_split(*feature_target_sample)
-    # TODO test if the length of return_tuple is 4
-    raise NotImplemented
+    # TO DO
+    # Check if the function returns exactly 4 values
+    assert len(return_tuple) == 4, "data_split() should return 4 values"
+    
+    # Assign values to variables
+    X_train, X_test, y_train, y_test = return_tuple
+    
+    # Ensure that the training and test sets are not empty
+    assert len(X_train) > 0, "X_train should not be empty"
+    assert len(X_test) > 0, "X_test should not be empty"
+    assert len(y_train) > 0, "y_train should not be empty"
+    assert len(y_test) > 0, "y_test should not be empty"
+    
+    # Ensure training and test sets are different
+    assert set(X_train.index) != set(X_test.index), "Train and test sets should not have overlapping indices"
